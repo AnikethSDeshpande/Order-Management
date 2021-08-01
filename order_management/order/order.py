@@ -1,13 +1,13 @@
 import logging
 
+from order_management.config import GST_NUMBER_LENGHT
+
 class Order:
     _order_ids = [0]
 
     def __init__(self):
         self.order_id = self.get_last_order_id()
         Order._order_ids.append(self.order_id + 1)
-        print('@@@@@setting order id: ', self.order_id)
-        # logging.INFO('setting order id: ', self.order_id)
     
     @classmethod
     def get_last_order_id(cls):
@@ -37,9 +37,12 @@ class Order:
         try:
             if not isinstance(gst_number, str):
                 raise Exception('gst_not_string')
-            if not len(gst_number) == 3:
+            if not len(gst_number) == GST_NUMBER_LENGHT:
                 raise Exception('gst_len_error')
             self._gst_number = gst_number
         except Exception as e:
             logging.ERROR('error while setting gst_number: {e}')
+    
 
+    def add_item(self):
+        pass
