@@ -1,6 +1,22 @@
+'''
+    Author: Aniketh Deshpande
+
+    Order Class
+        - Maintains order related information
+    
+    Fields
+        - Customer
+        - GST Number
+        - Order Items
+        - Order Value
+        - Tax
+        - Delivery Status
+'''
+
 import logging
 
 from order_management.config import GST_NUMBER_LENGHT
+from order_management.order_item.order_item import OrderItem
 
 class Order:
     _order_ids = [0]
@@ -27,7 +43,6 @@ class Order:
         except Exception as e:
             logging.ERROR('error while setting customer: {e}')
 
-
     @property
     def gst_number(self):
         return self._gst_number
@@ -44,5 +59,6 @@ class Order:
             logging.ERROR('error while setting gst_number: {e}')
     
 
-    def add_item(self):
-        pass
+    def add_item(self, item_name=None, qty=None, rate=None):
+        item = OrderItem()
+        
