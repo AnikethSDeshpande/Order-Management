@@ -24,6 +24,8 @@ class Order:
     def __init__(self):
         self.order_id = self.get_last_order_id()
         Order._order_ids.append(self.order_id + 1)
+        self.order_items = []
+        # self.order_total = 0
     
     @classmethod
     def get_last_order_id(cls):
@@ -59,6 +61,26 @@ class Order:
             logging.ERROR('error while setting gst_number: {e}')
     
 
+    @property
+    def order_total(self):
+        '''
+            calculates the total value of order based on the items added to the order
+        '''
+        order_total = 0
+        for order_item in self.order_items:
+            order_total += order_item.amount
+
+        return order_total
+
+
     def add_item(self, item_name=None, qty=None, rate=None):
-        item = OrderItem()
+        '''
+            add item to the list of items in the order
+        '''
+        item = OrderItem(order_id=self.order_id,
+                         item_name=item_name,
+                         qty=qty
+                        )
+        self.order_items.append(item)
+    
         

@@ -13,7 +13,7 @@
 
 import logging
 
-from order_management.catalogue.catalogue import CATALOGUE
+from order_management import CATALOGUE
 
 
 class OrderItem:
@@ -26,6 +26,7 @@ class OrderItem:
 
         self.order_item_id = self.get_last_order_item_id()
         OrderItem._order_item_ids.append(self.order_item_id + 1)
+        self.amount = 0
     
     @classmethod
     def get_last_order_item_id(cls):
@@ -45,6 +46,19 @@ class OrderItem:
             self.rate = CATALOGUE[item_name]
         except Exception as e:
             logging.ERROR(f'{e}: item not in catalogue')
+    
+    @property
+    def amount(self):
+        return self.amount_        
+
+    @amount.setter    
+    def amount(self, _):
+        try:
+            self.amount_ = self.rate * self.qty
+        except:
+            self.amount_ = 0
+            logging.error(f'error while setting order_item.amount for order_id: {self.order_id} and item: {self.item_name}')
+    
         
 
 
