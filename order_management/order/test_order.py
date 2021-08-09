@@ -11,15 +11,9 @@ class Test_Order_Creation(unittest.TestCase):
         order2 = Order()
         self.assertEqual(order2.order_id, 1)
     
-    def test_set_customer(self):
+    def test_order_customer_compulsory(self):
         order = Order()
-        order.customer = 'Aniketh'
-        self.assertEqual(order.customer, 'Aniketh')
-    
-    def test_set_gst_number(self):
-        order = Order()
-        order.gst_number = '123'
-        self.assertEqual(order.gst_number, '123')
+        print(order.customer)
     
     def test_order_item_addition(self):
         order = Order()

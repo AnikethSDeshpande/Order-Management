@@ -21,11 +21,11 @@ from order_management.order_item.order_item import OrderItem
 class Order:
     _order_ids = [0]
 
-    def __init__(self):
+    def __init__(self, customer=None):
         self.order_id = self.get_last_order_id()
         Order._order_ids.append(self.order_id + 1)
         self.order_items = []
-        # self.order_total = 0
+        self.customer = customer
     
     @classmethod
     def get_last_order_id(cls):
@@ -39,7 +39,10 @@ class Order:
     def customer(self, customer):
         try:
             if not isinstance(customer, str):
-                raise Exception('invalied customer name')
+                if customer == None:
+                    self._customer = customer
+                else:
+                    raise Exception('invalied customer name')
             self._customer = customer
         
         except Exception as e:
@@ -83,4 +86,3 @@ class Order:
                         )
         self.order_items.append(item)
     
-        
