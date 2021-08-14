@@ -25,6 +25,11 @@ class Test_Order_Creation(unittest.TestCase):
         order.add_item(item_name, qty)
 
         self.assertEqual(order.order_total, qty*CATALOGUE[item_name])
+    
+    def test_order_repr(self):
+        o = Order()
+        o.customer = 'Aniketh'
+        print(o)
 
 
 if __name__ == '__main__':

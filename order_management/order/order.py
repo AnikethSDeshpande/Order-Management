@@ -86,3 +86,6 @@ class Order:
                         )
         self.order_items.append(item)
     
+    def __repr__(self) -> str:
+        repr = f'order_id: {self.order_id}, customer: {self.customer}'
+        return repr
