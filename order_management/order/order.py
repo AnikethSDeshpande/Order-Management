@@ -89,3 +89,26 @@ class Order:
     def __repr__(self) -> str:
         repr = f'order_id: {self.order_id}, customer: {self.customer}'
         return repr
+
+    def print_order(self):
+        order_string = str()
+        order_id = self.order_id
+        customer = self.customer
+        gst_number = self.gst_number
+        order_total = self.order_total
+        
+        order_string += f'Order ID: {order_id}\n'
+        order_string += f'Customer: {customer}\n'
+        order_string += f'GST Number: {gst_number}\n\n'
+
+        order_string += 'Items'
+
+        items = [item for item in self.order_items]
+        
+        for i, item in enumerate(items):
+            order_string += f'\n{i+1}--------------------------------------\n{item}'
+        
+        order_string += '\n---------------------------------------'
+        order_string += f'\n Total: {order_total}'
+
+        return order_string

@@ -59,8 +59,13 @@ class OrderItem:
             self.amount_ = 0
             logging.error(f'error while setting order_item.amount for order_id: {self.order_id} and item: {self.item_name}')
     
-        
 
+    def __repr__(self) -> str:
+        repr = str()
+        repr += f' Item: {self.item_name}'
+        repr += f'\n Qty: {self.qty}; Rate: {self.rate}; Amount: {self.amount}'
+        return repr
+    
 
 # order_id = 1
 # item = 'Book'
