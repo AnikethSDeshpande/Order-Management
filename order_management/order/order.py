@@ -17,6 +17,7 @@ import logging
 
 from order_management.config import GST_NUMBER_LENGHT
 from order_management.order_item.order_item import OrderItem
+import re
 
 class Order:
     _order_ids = [0]
