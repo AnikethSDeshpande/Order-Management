@@ -30,21 +30,6 @@ class Test_Order_Creation(unittest.TestCase):
         o = Order()
         o.customer = 'Aniketh'
         print(o)
-    
-    def test_print_order(self):
-        order = Order()
-        order.customer = 'Aniketh'
-        order.gst_number = '123'
-
-        item_name = 'Pen'
-        qty = 100
-        order.add_item(item_name, qty)
-
-        item_name = 'Book'
-        qty = 30
-        order.add_item(item_name, qty)
-
-        print(order.print_order())
 
 
 if __name__ == '__main__':

@@ -89,6 +89,7 @@ class Order:
     def __repr__(self) -> str:
         repr = f'order_id: {self.order_id}, customer: {self.customer}'
         return repr
+<<<<<<< HEAD
 
     def print_order(self):
         order_string = str()
@@ -112,3 +113,5 @@ class Order:
         order_string += f'\n Total: {order_total}'
         # comment!
         return order_string
+=======
+>>>>>>> parent of 55454c5 (added print order method)

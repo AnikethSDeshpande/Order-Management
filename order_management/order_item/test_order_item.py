@@ -16,16 +16,4 @@ class Test_OrderItem(unittest.TestCase):
         oi = OrderItem(order_id, item, qty)
 
         self.assertEqual(oi.amount, qty*CATALOGUE[item])
-    
-    def test_order_item_repr(self):
-        order = Order()
-        order_id = order.order_id
-
-        item = 'Pen'
-        qty = 250
-
-        oi = OrderItem(order_id, item, qty)
-
-        print(oi)
-
         
